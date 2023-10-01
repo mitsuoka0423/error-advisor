@@ -56,7 +56,7 @@ export default function Home() {
                   description: "Modified code",
                 },
               },
-              required: ["errorCauseAndCorrectiveAction"],
+              required,
             },
           },
         ],
