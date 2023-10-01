@@ -7,6 +7,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <head>
+        <title>ChatGPTに聞く</title>
+      </head>
       <body>
         <Providers>
           {children}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Box, Button, ChakraProvider, Heading } from "@chakra-ui/react";
 
-import { PasswordInput } from "./components/PasswordInput";
+import { ApiKeyInput } from "./components/ApiKeyInput";
 import { TextArea } from "./components/TextArea";
 
 const ENDPOINT_CHAT_COMPLETION = "https://api.openai.com/v1/chat/completions";
@@ -89,15 +89,13 @@ export default function Home() {
               setValue={setErrorMessage}
             />
             <TextArea label="コード" value={code} setValue={setCode} />
-            <PasswordInput
-              label="API Key"
+            <ApiKeyInput
               value={apiKey}
               setValue={setApiKey}
             />
             <Button
               colorScheme="blue"
               onClick={handleClick}
-              disabled={!!apiKey}
             >
               ChatGPTに聞く
             </Button>
