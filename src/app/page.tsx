@@ -12,6 +12,7 @@ import {
 import { TextArea } from "./components/TextArea";
 import { ConversationResponseType } from "@/interfaces/conversation";
 
+
 export default function Home() {
   const [errorMessage, setErrorMessage] = useState("");
   const [code, setCode] = useState("");
