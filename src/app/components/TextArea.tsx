@@ -3,11 +3,12 @@ import { Box, Text, Textarea } from "@chakra-ui/react";
 
 interface TextAreaProps {
   label: string;
+  placeholder?: string;
   value: string;
   setValue: (value: string) => void;
 }
 
-export const TextArea = ({ label, value, setValue }: TextAreaProps) => {
+export const TextArea = ({ label, placeholder, value, setValue }: TextAreaProps) => {
   const handleInputChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     const inputValue = e.target.value;
     setValue(inputValue);
@@ -16,7 +17,7 @@ export const TextArea = ({ label, value, setValue }: TextAreaProps) => {
   return (
     <Box>
       <Text mb="8px">{label}</Text>
-      <Textarea value={value} onChange={handleInputChange} height="300px" />
+      <Textarea value={value} placeholder={placeholder} onChange={handleInputChange} height="300px" />
     </Box>
   );
 };
