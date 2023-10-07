@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button, ChakraProvider, Heading } from "@chakra-ui/react";
+import { Box, Button, ChakraProvider, Heading, Progress } from "@chakra-ui/react";
 
 import { ApiKeyInput } from "./components/ApiKeyInput";
 import { TextArea } from "./components/TextArea";
@@ -14,6 +14,7 @@ export default function Home() {
   const [apiKey, setApiKey] = useState("");
   const [advice, setAdvice] = useState("");
   const [adviceCode, setAdviceCode] = useState("");
+  const [isIndeterminate, setIsIndeterminate] = useState(false);
 
   const handleClick = () => {
     const prompt = [`エラーメッセージ: \`\`\`${errorMessage}\`\`\``];
@@ -23,6 +24,7 @@ export default function Home() {
       required.push("modifiedCode");
     }
 
+    setIsIndeterminate(true);
     fetch(ENDPOINT_CHAT_COMPLETION, {
       method: "POST",
       headers: {
@@ -69,6 +71,7 @@ export default function Home() {
         );
         setAdvice(advice.errorCauseAndCorrectiveAction);
         setAdviceCode(advice.modifiedCode);
+        setIsIndeterminate(false);
       })
       .catch((error) => console.error(error));
   };
@@ -80,6 +83,7 @@ export default function Home() {
           <Heading as="h1">コードのエラーをChatGPTに聞く</Heading>
         </Box>
       </header>
+      <Progress size='xs' isIndeterminate={isIndeterminate} />
       <main>
         <Box display="flex" flexDirection="row" columnGap="24px" margin="24px">
           <Box flexGrow="1" display="flex" flexDirection="column" rowGap="24px">
