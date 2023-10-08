@@ -1,17 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  ChakraProvider,
-  Heading,
-  Progress,
-} from "@chakra-ui/react";
+import { Box, Button, Heading, Progress } from "@chakra-ui/react";
 
 import { TextArea } from "./components/TextArea";
 import { ConversationResponseType } from "@/interfaces/conversation";
-
+import Login from "./login";
 
 export default function Home() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -45,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <ChakraProvider>
+    <>
       <header>
         <Box
           bg="#D9D9D9"
@@ -59,6 +53,7 @@ export default function Home() {
         </Box>
       </header>
       <Progress size="xs" isIndeterminate={isIndeterminate} />
+      <Login></Login>
       <main>
         <Box display="flex" flexDirection="row" columnGap="24px" margin="24px">
           <Box flexGrow="1" display="flex" flexDirection="column" rowGap="24px">
@@ -96,6 +91,6 @@ export default function Home() {
           </Box>
         </Box>
       </main>
-    </ChakraProvider>
+    </>
   );
 }
